@@ -128,7 +128,9 @@
     </div>
 
   </div>
-
+  
+  <audio id="specimen-audio" src="surpriseMF.mp3" preload="auto"></audio>
+  
   <script>
     // Find out which object was discovered
     const params = new URLSearchParams(window.location.search);
@@ -172,7 +174,15 @@
         "This object appears to exist, but its paperwork has not caught up.";
       document.getElementById("object-number").textContent = "UNKNOWN SPECIMEN";
     }
-    
+
+    if (id === "458") {
+      const audio = document.getElementById("specimen-audio");
+      audio.volume = 0.8;
+      audio.play().catch(error => {
+        console.log("Autoplay was blocked by the browser:", error);
+      });
+    }
+        
   </script>
 
 </body>
