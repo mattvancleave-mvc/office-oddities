@@ -146,15 +146,22 @@
     };
 
     // Find the object matching the QR code
-    const object = objects[id] || objects["001"];
+    const object = objects[id];
 
-    // Put its information on the page
-    document.getElementById("icon").textContent = object.icon;
-    document.getElementById("designation").textContent = object.designation;
-    document.getElementById("name").textContent = object.name;
-    document.getElementById("subtitle").textContent = object.subtitle;
-    document.getElementById("message").textContent = object.message;
-    document.getElementById("object-number").textContent = "SPECIMEN " + id;
+    if (object) {
+      document.getElementById("icon").textContent = object.icon;
+      document.getElementById("designation").textContent = object.designation;
+      document.getElementById("name").textContent = object.name;
+      document.getElementById("subtitle").textContent = object.subtitle;
+      document.getElementById("message").textContent = object.message;
+      document.getElementById("object-number").textContent = "SPECIMEN " + id;
+    } else {
+      document.getElementById("name").textContent = "Unidentified Oddity";
+      document.getElementById("message").textContent =
+        "This object appears to exist, but its paperwork has not caught up.";
+      document.getElementById("object-number").textContent = "UNKNOWN SPECIMEN";
+    }
+    
   </script>
 
 </body>
