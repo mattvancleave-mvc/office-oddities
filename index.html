@@ -126,6 +126,9 @@
     <div class="object-number" id="object-number">
       SPECIMEN 001
     </div>
+    <button id="sound-button" style="display:none; margin-top:24px; padding:14px 24px; border:0; border-radius:10px; background:#354638; color:white; font-size:16px; cursor:pointer;">
+      INITIATE SPECIMEN
+    </button>
 
   </div>
   
@@ -177,9 +180,21 @@
 
     if (id === "458") {
       const audio = document.getElementById("specimen-audio");
-      audio.volume = 0.8;
-      audio.play().catch(error => {
-        console.log("Autoplay was blocked by the browser:", error);
+      const button = document.getElementById("sound-button");
+    
+      button.style.display = "inline-block";
+    
+      button.addEventListener("click", () => {
+        audio.volume = 0.8;
+        audio.currentTime = 0;
+    
+        audio.play().then(() => {
+          button.textContent = "SPECIMEN ACTIVATED";
+          button.disabled = true;
+        }).catch(error => {
+          button.textContent = "ACTIVATION FAILED — TRY AGAIN";
+          console.log(error);
+        });
       });
     }
         
