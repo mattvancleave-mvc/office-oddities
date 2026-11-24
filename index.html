@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Office Oddities</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f3efe6;
+      color: #30352f;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 440px;
+      background: #fffdf8;
+      border: 1px solid #e2dccf;
+      border-radius: 22px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+    }
+
+    .brand {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #777b6d;
+      margin-bottom: 30px;
+    }
+
+    .object-icon {
+      font-size: 76px;
+      margin-bottom: 16px;
+    }
+
+    .designation {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8a8d7f;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin: 12px 0;
+      color: #354638;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #777;
+      margin-bottom: 28px;
+    }
+
+    .message {
+      background: #f3f3eb;
+      border-radius: 14px;
+      padding: 22px;
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .footer {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #888;
+    }
+
+    .object-number {
+      margin-top: 28px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <div class="brand">Office Oddities</div>
+
+    <div class="object-icon" id="icon">🦃</div>
+
+    <div class="designation" id="designation">
+      Department of Questionable Decisions
+    </div>
+
+    <h1 id="name">Frank</h1>
+
+    <div class="subtitle" id="subtitle">
+      Senior Hallway Inspector
+    </div>
+
+    <div class="message" id="message">
+      This turkey has been placed in charge of employee morale.
+      His qualifications are questionable.
+      His commitment to snacks is absolute.
+    </div>
+
+    <div class="footer">
+      You may keep this specimen.
+
+      <br><br>
+
+      Or release it back into the wild
+      for someone else to discover.
+    </div>
+
+    <div class="object-number" id="object-number">
+      SPECIMEN 001
+    </div>
+
+  </div>
+
+  <script>
+    // Find out which object was discovered
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id") || "001";
+
+    // Our collection of office oddities
+    const objects = {
+      "001": {
+        icon: "🦃",
+        designation: "Department of Questionable Decisions",
+        name: "Frank",
+        subtitle: "Senior Hallway Inspector",
+        message: "This turkey has been placed in charge of employee morale. His qualifications are questionable. His commitment to snacks is absolute."
+      }
+    };
+
+    // Find the object matching the QR code
+    const object = objects[id] || objects["001"];
+
+    // Put its information on the page
+    document.getElementById("icon").textContent = object.icon;
+    document.getElementById("designation").textContent = object.designation;
+    document.getElementById("name").textContent = object.name;
+    document.getElementById("subtitle").textContent = object.subtitle;
+    document.getElementById("message").textContent = object.message;
+    document.getElementById("object-number").textContent = "SPECIMEN " + id;
+  </script>
+
+</body>
+</html>
